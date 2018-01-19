@@ -43,6 +43,11 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
 
             Lab3Postcomments model = new Lab3Postcomments();
 
+            if (comment.Contains("<script>"))
+            {
+                // Throw Error.
+            }
+
             if (model.storeComment(postid, comment))
             {  
                 return RedirectToAction("Index", "Lab3");
