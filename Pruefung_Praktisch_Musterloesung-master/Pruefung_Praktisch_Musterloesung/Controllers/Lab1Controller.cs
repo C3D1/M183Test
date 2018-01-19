@@ -17,7 +17,7 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
          * Beschreibung: Der Code geht sucht nach dem Verzeichnis und geht alles Files durch. Dadurch hat der Hacker Sicht auf alle Files im Verzeichnis.
          * 2.Attack) Directory traversal attack
          * URL:http://mysite.com/Lab1/Detail?type=../../../../../Windows/system.ini HTTP/1.1
-         * Beschreibung:
+         * Beschreibung:Dies würde das System dazubewegen das system.ini file von windows zu holen und wiedergeben. Mithilfe von "../" geht der Hacker immer ins höhere Verzeichnis. Mit Try and Error gelangt er dann an das File, dass er will. In meinem Beispiel das System.ini file.
          * */
 
 
@@ -72,9 +72,20 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
             {
                 file = "Lion1.jpg";
             }
+            else
+            {
+                type.Replace("\\", "");
+                type.Replace("/", "");
+            }
+
             if (string.IsNullOrEmpty(type))
             {
                 file = "lions";
+            }
+            else
+            {
+                type.Replace("\\", "");
+                type.Replace("/", "");
             }
 
             var relpath = "~/Content/images/" + type + "/" + file;
