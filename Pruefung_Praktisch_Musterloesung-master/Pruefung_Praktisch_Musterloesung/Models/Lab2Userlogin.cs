@@ -20,8 +20,9 @@ namespace Pruefung_Praktisch_Musterloesung.Models
         {
             SqlConnection con = this.setUp();
 
-            SqlCommand cmd_credentials = new SqlCommand();
-            cmd_credentials.CommandText = "SELECT id FROM [dbo].[Userlogin] WHERE Username = '" + username + "' AND Password = '" + password + "'";
+            SqlCommand cmd_credentials = new SqlCommand("SELECT id FROM [dbo].[Userlogin] WHERE Username = '@username' AND Password = '@password'");
+            cmd_credentials.Parameters.AddWithValue("@username", username);
+            cmd_credentials.Parameters.AddWithValue("@password", password);
             cmd_credentials.Connection = con;
 
             con.Open();

@@ -20,7 +20,7 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
         * ANTWORTEN BITTE HIER
         * 1.Attack) SQL-Injection ist die erste Angriffsmöglichkeit.
         * In dem man in die Login Felder SQL Logik eingibt, werden diese nachher ausgeführt. Dadurch könnte sich der Hacker ohne sich wirklich angemeldet zu haben, einloggen.
-        * Example: Username: Cedric OR 1=1 Passwort: 0 or "=""
+        * Example: Username: Cedric OR 1=1 Passwort: " OR "=""
         * 2.Attack) Session Fixation ist die zweite Angriffsmöglichkeit
         * In dem man beispielsweise in einem Link die SessionId mitgibt, bekommt ein anderer Benutzer Zugriff auf den Account des ursprünglichen Besitzers der Session.
         * 
@@ -91,6 +91,7 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
             //var ip = Request.UserHostAddress;
 
             Lab2Userlogin model = new Lab2Userlogin();
+
 
             if (model.checkSessionInfos(sessionid))
             {

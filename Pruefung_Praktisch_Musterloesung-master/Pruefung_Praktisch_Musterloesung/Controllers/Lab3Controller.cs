@@ -14,7 +14,12 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
         /**
         * 
         * ANTWORTEN BITTE HIER
-        * 
+        * 1.Attack)XSS Attack
+        * Man kann einen Kommentar adden, der Javascript Code enthält. Dieser Javascript Code wird dann beim nächsten Öffnen der Seite ausgeführt und jeder der diesen Kommentar sieht, wird dadurch angegriffen.
+        * http://localhost:50374/Lab3/comment?comment=hallo<script>alert('attacked')</script>
+        * 2.Attack) SQL-Injection ist die zweite Angriffsmöglichkeit.
+        * In dem man in die Login Felder SQL Logik eingibt, werden diese nachher ausgeführt. Dadurch könnte sich der Hacker ohne sich wirklich angemeldet zu haben, einloggen.
+        * Example: Username: Cedric OR 1=1 Passwort: " OR "=""
         * */
 
         public ActionResult Index() {
@@ -56,6 +61,7 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
             var password = Request["password"];
 
             Lab3User model = new Lab3User();
+
 
             if (model.checkCredentials(username, password))
             {
