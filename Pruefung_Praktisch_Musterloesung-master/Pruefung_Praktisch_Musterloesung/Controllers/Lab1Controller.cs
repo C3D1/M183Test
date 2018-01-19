@@ -12,7 +12,12 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
         /**
          * 
          * ANTWORTEN BITTE HIER
-         * 
+         * 1.Attack) Man kann den den Parameter "type" im Filepfad abändern.
+         * URL: mysite.com/Lab1/Detail?type=../../secretFile.txt
+         * Beschreibung: Der Code geht sucht nach dem Verzeichnis und geht alles Files durch. Dadurch hat der Hacker Sicht auf alle Files im Verzeichnis.
+         * 2.Attack) Directory traversal attack
+         * URL:http://mysite.com/Lab1/Detail?type=../../../../../Windows/system.ini HTTP/1.1
+         * Beschreibung:
          * */
 
 
@@ -23,6 +28,11 @@ namespace Pruefung_Praktisch_Musterloesung.Controllers
             if (string.IsNullOrEmpty(type))
             {
                 type = "lions";                
+            }
+            else
+            {
+                type.Replace("\\", "");
+                type.Replace("/", "");
             }
 
             var path = "~/Content/images/" + type;
